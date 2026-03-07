@@ -223,6 +223,9 @@ Endpoints:
 - `GET /analysis/monthly-growth`
 - `GET /analysis/breakeven`
 - `GET /analysis/cashflow`
+- `GET /analysis/sales-trend`
+- `GET /analysis/demand-vs-stock`
+- `GET /analysis/cost-efficiency`
 
 If data is unavailable:
 - `400` with detail:
@@ -263,25 +266,42 @@ Endpoints:
 ### Cashflow
 - Total inflow/outflow/net movement and monthly cashflow.
 
+### Sales Trend
+- Month-wise sales revenue trend (QuantitySold × UnitPriceSold).
+- Optional monthly breakdown by PaymentMode and DeliveryType.
+
+### Demand vs Stock
+- Item-wise stock and demand comparison.
+- Flags potential overstock and stockout-risk items.
+
+### Cost Efficiency
+- Month-wise purchase costs vs operating expenses.
+- Includes combined cost and expense-to-purchase ratio trend.
+
 ## 11. Report Generation
 File: `reports/report_generator.py`
 
 ### PDF (`BI_Report.pdf`)
-Contains key sections:
-- Profitability
-- Cash Flow
-- Inventory
-- Break-Even
+Contains executive summaries and dedicated visualization pages for trend-heavy analyses, including:
+- Profitability snapshot
+- Discounts snapshot
+- Inventory + Demand vs Stock summaries
+- Expense + Break-even summaries
+- Visual charts for monthly growth, sales trend, cashflow, category revenue, and cost efficiency
 
 ### Excel (`BI_Report.xlsx`)
-Sheets generated:
-- `Profitability`
-- `Monthly Growth`
-- `Top Products`
-- `Expenses`
-- `Cash Flow`
-- `Break-Even`
-- `Reorder Alerts`
+Sheets generated for all analyses with both summary/detail tables, plus a `Dashboard Charts` worksheet with embedded visuals.
+Key sheets include:
+- `Profitability`, `Discounts Summary`, `Discounts Monthly`
+- `Inventory Summary`, `Reorder Alerts`
+- `Monthly Growth`, `Top Products`, `Category Revenue`
+- `Expenses`, `Expenses Summary`, `Monthly Expenses`
+- `Cash Flow`, `Cash Flow Summary`
+- `Break-Even`, `Break-Even Summary`
+- `Sales Trend`, `Sales by Payment`, `Sales by Delivery`
+- `Demand vs Stock`, `Overstock Items`, `Stockout Risk`, `Demand Stock Summary`
+- `Cost Efficiency`, `Cost Efficiency Summary`
+- `Dashboard Charts`
 
 ## 12. Setup and Run
 From project root:
