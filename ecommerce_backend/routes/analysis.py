@@ -13,9 +13,22 @@ from analysis.expenses       import compute_expenses
 from analysis.monthly_growth import compute_monthly_growth
 from analysis.breakeven      import compute_breakeven
 from analysis.cashflow       import compute_cashflow
+from analysis.sales_trend    import compute_sales_trend
+from analysis.demand_vs_stock import compute_demand_vs_stock
+from analysis.cost_efficiency import compute_cost_efficiency
 
 router = APIRouter(prefix="/analysis")
 logger = get_logger(__name__)
+
+
+def _analysis_context() -> dict:
+    return {
+        "sales": state.store["sales"],
+        "purch": state.store["purch"],
+        "inv": state.store["inv"],
+        "exp": state.store["exp"],
+        "analysis": {},
+    }
 
 
 def _require_data():
@@ -72,3 +85,21 @@ def breakeven():
 def cashflow():
     _require_data()
     return compute_cashflow(state.store)
+
+
+@router.get("/sales-trend")
+def sales_trend():
+    _require_data()
+    return compute_sales_trend(_analysis_context())
+
+
+@router.get("/demand-vs-stock")
+def demand_vs_stock():
+    _require_data()
+    return compute_demand_vs_stock(_analysis_context())
+
+
+@router.get("/cost-efficiency")
+def cost_efficiency():
+    _require_data()
+    return compute_cost_efficiency(_analysis_context())
