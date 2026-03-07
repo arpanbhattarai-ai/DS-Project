@@ -342,3 +342,31 @@
 2026-03-07 23:13:21 | INFO     | main | Nepal Ecommerce BI API started.
 2026-03-07 23:13:21 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
 2026-03-07 23:13:21 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:13:33 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:13:33 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:13:33 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:13:33 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:13:33 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:13:33 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:13:33 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:13:33 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:13:33 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:13:33 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:13:33 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-07 23:14:14 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:14:14 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:14:14 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:15:21 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:15:21 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:15:21 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:15:27 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:15:27 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:15:27 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:15:27 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:15:27 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:15:27 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:15:27 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:15:27 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:15:27 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:15:27 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:15:27 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
