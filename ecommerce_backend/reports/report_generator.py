@@ -169,7 +169,9 @@ def generate_pdf(store: dict) -> str:
 
     data = _all(store)
     p    = data["profitability"]
-    be   = data["breakeven"]
+    d    = data["discounts"]
+    exp  = data["expenses"]
+    be   = data["breakeven"]    
     cf   = data["cashflow"]
     inv  = data["inventory"]
     st   = data["sales_trend"]
@@ -208,28 +210,28 @@ def generate_pdf(store: dict) -> str:
     _pdf_row(pdf, "Stockout Risk Items", dvs["summary"]["stockout_risk_items"])
 
 
-    section("Monthly Sales Revenue Trend")
-    row("Total Sales Revenue", f"NPR {st['total_sales_revenue_npr']:,.0f}")
+    _pdf_section(pdf, "Monthly Sales Revenue Trend")
+    _pdf_row(pdf, "Total Sales Revenue", f"NPR {st['total_sales_revenue_npr']:,.0f}")
     first_month = st["monthly_sales_revenue"][0] if st["monthly_sales_revenue"] else None
     last_month = st["monthly_sales_revenue"][-1] if st["monthly_sales_revenue"] else None
     if first_month:
-        row("First Month Revenue", f"{first_month['MonthName']}: NPR {first_month['revenue_npr']:,.0f}")
+        _pdf_row(pdf, "First Month Revenue", f"{first_month['MonthName']}: NPR {first_month['revenue_npr']:,.0f}")
     if last_month:
-        row("Latest Month Revenue", f"{last_month['MonthName']}: NPR {last_month['revenue_npr']:,.0f}")
+        _pdf_row(pdf, "Latest Month Revenue", f"{last_month['MonthName']}: NPR {last_month['revenue_npr']:,.0f}")
     pdf.ln(3)
 
-    section("Stock vs Sales Demand Analysis")
-    row("Items Tracked", dvs["summary"]["items_tracked"])
-    row("Overstock Items", dvs["summary"]["overstock_items"])
-    row("Stockout Risk Items", dvs["summary"]["stockout_risk_items"])
-    row("Total Stock Units", f"{dvs['summary']['total_opening_stock_units']:,.0f}")
-    row("Total Demand Units", f"{dvs['summary']['total_sales_demand_units']:,.0f}")
+    _pdf_section(pdf, "Stock vs Sales Demand Analysis")
+    _pdf_row(pdf, "Items Tracked", dvs["summary"]["items_tracked"])
+    _pdf_row(pdf, "Overstock Items", dvs["summary"]["overstock_items"])
+    _pdf_row(pdf, "Stockout Risk Items", dvs["summary"]["stockout_risk_items"])
+    _pdf_row(pdf, "Total Stock Units", f"{dvs['summary']['total_opening_stock_units']:,.0f}")
+    _pdf_row(pdf, "Total Demand Units", f"{dvs['summary']['total_sales_demand_units']:,.0f}")
     pdf.ln(3)
 
-    section("Expense vs Purchase Cost Trend")
-    row("Total Purchase Cost", f"NPR {ce['summary']['total_purchase_cost_npr']:,.0f}")
-    row("Total Operating Expense", f"NPR {ce['summary']['total_operating_expense_npr']:,.0f}")
-    row("Combined Cost", f"NPR {ce['summary']['total_combined_cost_npr']:,.0f}")
+    _pdf_section(pdf, "Expense vs Purchase Cost Trend")
+    _pdf_row(pdf, "Total Purchase Cost", f"NPR {ce['summary']['total_purchase_cost_npr']:,.0f}")
+    _pdf_row(pdf, "Total Operating Expense", f"NPR {ce['summary']['total_operating_expense_npr']:,.0f}")
+    _pdf_row(pdf, "Combined Cost", f"NPR {ce['summary']['total_combined_cost_npr']:,.0f}")
     pdf.ln(3)
 
     _pdf_section(pdf, "Expenses")
