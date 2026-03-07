@@ -1,0 +1,200 @@
+2026-03-04 18:11:03 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 18:35:54 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 18:36:13 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 18:36:13 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-04 18:36:13 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-04 18:36:13 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-04 18:36:14 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-04 18:36:14 | INFO     | pipeline.runner | <-- Stage: ingest (1.106s)
+2026-03-04 18:36:14 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-04 18:36:14 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-04 18:36:14 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-04 18:36:14 | INFO     | pipeline.runner | <-- Stage: clean (0.067s)
+2026-03-04 18:36:14 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-04 18:36:14 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:14 | INFO     | pipeline.runner | <-- Stage: transform (0.003s)
+2026-03-04 18:36:14 | INFO     | pipeline.runner | Pipeline complete in 1.180s
+2026-03-04 18:36:14 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:14 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-04 18:36:30 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 18:36:30 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-04 18:36:30 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-04 18:36:30 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-04 18:36:31 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-04 18:36:31 | INFO     | pipeline.runner | <-- Stage: ingest (1.005s)
+2026-03-04 18:36:31 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-04 18:36:31 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-04 18:36:31 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-04 18:36:31 | INFO     | pipeline.runner | <-- Stage: clean (0.060s)
+2026-03-04 18:36:31 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-04 18:36:31 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:31 | INFO     | pipeline.runner | <-- Stage: transform (0.002s)
+2026-03-04 18:36:31 | INFO     | pipeline.runner | Pipeline complete in 1.070s
+2026-03-04 18:36:31 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:31 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-04 18:36:41 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 18:36:41 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-04 18:36:41 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-04 18:36:41 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-04 18:36:42 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-04 18:36:42 | INFO     | pipeline.runner | <-- Stage: ingest (0.977s)
+2026-03-04 18:36:42 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-04 18:36:42 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-04 18:36:42 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-04 18:36:42 | INFO     | pipeline.runner | <-- Stage: clean (0.061s)
+2026-03-04 18:36:42 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-04 18:36:42 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:42 | INFO     | pipeline.runner | <-- Stage: transform (0.002s)
+2026-03-04 18:36:42 | INFO     | pipeline.runner | Pipeline complete in 1.043s
+2026-03-04 18:36:42 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 18:36:42 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-04 18:41:39 | INFO     | analysis.products | Product metrics computed.
+2026-03-04 19:07:50 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-04 19:07:50 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-04 19:07:50 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-04 19:07:50 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-04 19:07:51 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-04 19:07:51 | INFO     | pipeline.runner | <-- Stage: ingest (1.240s)
+2026-03-04 19:07:51 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-04 19:07:51 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-04 19:07:51 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-04 19:07:51 | INFO     | pipeline.runner | <-- Stage: clean (0.076s)
+2026-03-04 19:07:51 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-04 19:07:51 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 19:07:51 | INFO     | pipeline.runner | <-- Stage: transform (0.003s)
+2026-03-04 19:07:51 | INFO     | pipeline.runner | Pipeline complete in 1.322s
+2026-03-04 19:07:51 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-04 19:07:51 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-04 19:08:24 | INFO     | analysis.profitability | Profitability: NetProfit=12,202,347  GPM=27.84%
+2026-03-04 19:08:24 | INFO     | analysis.discounts | Discounts: 2.85% of gross revenue
+2026-03-04 19:08:24 | INFO     | analysis.inventory | Inventory: turnover=1.73x  DIO=211.5d
+2026-03-04 19:08:24 | INFO     | analysis.products | Product metrics computed.
+2026-03-04 19:08:24 | INFO     | analysis.expenses | Expenses: OpEx%=7.33
+2026-03-04 19:08:24 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-04 19:08:24 | INFO     | analysis.breakeven | Break-even: BEU=1,382  MoS=93.46%
+2026-03-04 19:08:24 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=30,260,772
+2026-03-04 19:08:24 | INFO     | reports.report_generator | PDF saved: data\exports\BI_Report.pdf
+2026-03-05 16:35:15 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 16:35:15 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-05 16:35:15 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-05 16:35:15 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-05 16:35:17 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-05 16:35:17 | INFO     | pipeline.runner | <-- Stage: ingest (2.382s)
+2026-03-05 16:35:17 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-05 16:35:18 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-05 16:35:18 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-05 16:35:18 | INFO     | pipeline.runner | <-- Stage: clean (0.155s)
+2026-03-05 16:35:18 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-05 16:35:18 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:35:18 | INFO     | pipeline.runner | <-- Stage: transform (0.004s)
+2026-03-05 16:35:18 | INFO     | pipeline.runner | Pipeline complete in 2.546s
+2026-03-05 16:35:18 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:35:18 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-05 16:36:08 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 16:36:08 | INFO     | main | Loading existing file on startup: Data Structure.xlsx
+2026-03-05 16:36:08 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-05 16:36:08 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-05 16:36:10 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-05 16:36:10 | INFO     | pipeline.runner | <-- Stage: ingest (1.894s)
+2026-03-05 16:36:10 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-05 16:36:10 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-05 16:36:10 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-05 16:36:10 | INFO     | pipeline.runner | <-- Stage: clean (0.101s)
+2026-03-05 16:36:10 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-05 16:36:10 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:36:10 | INFO     | pipeline.runner | <-- Stage: transform (0.003s)
+2026-03-05 16:36:10 | INFO     | pipeline.runner | Pipeline complete in 2.002s
+2026-03-05 16:36:10 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:36:10 | INFO     | main | Startup preload complete. Loaded and merged 1 file(s).
+2026-03-05 16:36:53 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 16:36:53 | INFO     | main | Bootstrapping DB from: Data Structure.xlsx
+2026-03-05 16:36:53 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-05 16:36:53 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-05 16:36:55 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-05 16:36:55 | INFO     | pipeline.runner | <-- Stage: ingest (1.942s)
+2026-03-05 16:36:55 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-05 16:36:55 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-05 16:36:55 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-05 16:36:55 | INFO     | pipeline.runner | <-- Stage: clean (0.104s)
+2026-03-05 16:36:55 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-05 16:36:55 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:36:55 | INFO     | pipeline.runner | <-- Stage: transform (0.004s)
+2026-03-05 16:36:55 | INFO     | pipeline.runner | Pipeline complete in 2.055s
+2026-03-05 16:36:56 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:36:56 | INFO     | main | Startup bootstrap complete. Imported 1 file(s) into SQLite.
+2026-03-05 16:39:30 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 16:39:30 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 16:39:30 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-05 18:17:38 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 18:17:38 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 18:17:38 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-05 18:17:58 | INFO     | analysis.profitability | Profitability: NetProfit=12,202,347  GPM=27.84%
+2026-03-05 18:18:09 | INFO     | analysis.products | Product metrics computed.
+2026-03-05 18:18:46 | INFO     | analysis.profitability | Profitability: NetProfit=12,202,347  GPM=27.84%
+2026-03-05 18:20:48 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 18:20:49 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 18:20:49 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-05 18:21:27 | INFO     | analysis.profitability | Profitability: NetProfit=12,202,347  GPM=27.84%
+2026-03-05 18:44:52 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-05 18:44:52 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-05 18:44:52 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 17:21:15 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 17:21:15 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=61,258,985  NetRevenue=59,510,472
+2026-03-07 17:21:15 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 17:23:36 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 17:57:00 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 17:57:00 | INFO     | main | Bootstrapping DB from: Data Structure.xlsx
+2026-03-07 17:57:00 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-07 17:57:00 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-07 17:57:04 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-07 17:57:04 | INFO     | pipeline.runner | <-- Stage: ingest (4.072s)
+2026-03-07 17:57:04 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-07 17:57:04 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-07 17:57:04 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-07 17:57:04 | INFO     | pipeline.stage_02_clean | Clean summary: inv -0 dup, sales -1893 dup, purch -72 dup
+2026-03-07 17:57:04 | INFO     | pipeline.runner | <-- Stage: clean (0.228s)
+2026-03-07 17:57:04 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-07 17:57:04 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 17:57:04 | INFO     | pipeline.runner | <-- Stage: transform (0.005s)
+2026-03-07 17:57:04 | INFO     | pipeline.runner | Pipeline complete in 4.310s
+2026-03-07 17:57:06 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 17:57:06 | INFO     | main | Startup bootstrap complete. Imported 1 file(s) into SQLite.
+2026-03-07 17:57:23 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 18:08:57 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:08:57 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:08:57 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:18:55 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:18:55 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:18:55 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:31:44 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:31:44 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:31:44 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:36:24 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:36:25 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:36:25 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:39:33 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:39:34 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:39:34 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:42:33 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:42:33 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=49,379,482  NetRevenue=48,147,484
+2026-03-07 18:42:33 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 18:42:58 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 18:42:59 | INFO     | main | Bootstrapping DB from: Data Structure.xlsx
+2026-03-07 18:42:59 | INFO     | pipeline.runner | --> Stage: ingest
+2026-03-07 18:43:00 | INFO     | pipeline.stage_01_ingest | Ingesting: Data Structure.xlsx
+2026-03-07 18:43:10 | INFO     | pipeline.stage_01_ingest | Loaded  Inventory:112  Sales:10000  Purchase:378  Expenses:12
+2026-03-07 18:43:10 | INFO     | pipeline.runner | <-- Stage: ingest (9.906s)
+2026-03-07 18:43:10 | INFO     | pipeline.runner | --> Stage: clean
+2026-03-07 18:43:10 | INFO     | pipeline.stage_02_clean | Cleaned sales: removed 0 fully-empty rows
+2026-03-07 18:43:10 | INFO     | pipeline.stage_02_clean | Cleaned purch: removed 0 fully-empty rows
+2026-03-07 18:43:11 | INFO     | pipeline.stage_02_clean | Clean summary: inv -0 dup, sales -0 dup, purch -0 dup
+2026-03-07 18:43:11 | INFO     | pipeline.runner | <-- Stage: clean (0.672s)
+2026-03-07 18:43:11 | INFO     | pipeline.runner | --> Stage: transform
+2026-03-07 18:43:11 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 18:43:11 | INFO     | pipeline.runner | <-- Stage: transform (0.016s)
+2026-03-07 18:43:11 | INFO     | pipeline.runner | Pipeline complete in 11.373s
+2026-03-07 18:43:14 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 18:43:14 | INFO     | main | Startup bootstrap complete. Imported 1 file(s) into SQLite.
+2026-03-07 19:24:20 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 19:24:20 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 19:24:20 | INFO     | main | Loaded analysis data from SQLite.
