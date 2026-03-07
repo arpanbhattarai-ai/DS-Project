@@ -232,11 +232,21 @@ def generate_pdf(store: dict) -> str:
     row("Combined Cost", f"NPR {ce['summary']['total_combined_cost_npr']:,.0f}")
     pdf.ln(3)
 
-    section("Break-Even")
-    row("Overall Break-Even Units", f"{be['overall_breakeven_units']:,.0f}")
-    row("Actual Units Sold",        f"{be['actual_units_sold']:,.0f}")
-    row("Margin of Safety",         f"{be['margin_of_safety_pct']}%")
-    pdf.ln(3)
+    _pdf_section(pdf, "Expenses")
+    _pdf_row(pdf, "Total OpEx", f"NPR {exp['total_opex_npr']:,.0f}")
+    _pdf_row(pdf, "OpEx % of Revenue", f"{exp['opex_pct_of_revenue']}%")
+
+    _pdf_section(pdf, "Break-Even")
+    _pdf_row(pdf, "Overall Break-Even Units", f"{be['overall_breakeven_units']:,.0f}")
+    _pdf_row(pdf, "Margin of Safety", f"{be['margin_of_safety_pct']}%")
+
+    _pdf_section(pdf, "Cost Efficiency")
+    _pdf_row(pdf, "Total Purchase Cost", f"NPR {ce['summary']['total_purchase_cost_npr']:,.0f}")
+    _pdf_row(pdf, "Total Operating Expense", f"NPR {ce['summary']['total_operating_expense_npr']:,.0f}")
+
+    pdf.add_page()
+    _pdf_section(pdf, "Visual Trends")
+    _render_pdf_visuals(pdf, data)
 
     out = str(EXPORT_DIR / "BI_Report.pdf")
     pdf.output(out)
