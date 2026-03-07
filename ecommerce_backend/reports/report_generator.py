@@ -12,6 +12,9 @@ from analysis.expenses       import compute_expenses
 from analysis.monthly_growth import compute_monthly_growth
 from analysis.breakeven      import compute_breakeven
 from analysis.cashflow       import compute_cashflow
+from analysis.sales_trend    import compute_sales_trend
+from analysis.demand_vs_stock import compute_demand_vs_stock
+from analysis.cost_efficiency import compute_cost_efficiency
 
 logger = get_logger(__name__)
 EXPORT_DIR = Path("data/exports")
@@ -19,6 +22,14 @@ EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def _all(store: dict) -> dict:
+    context = {
+        "inv": store["inv"],
+        "sales": store["sales"],
+        "purch": store["purch"],
+        "exp": store["exp"],
+        "analysis": {},
+    }
+
     return {
         "profitability":  compute_profitability(store),
         "discounts":      compute_discounts(store),
@@ -28,6 +39,9 @@ def _all(store: dict) -> dict:
         "monthly_growth": compute_monthly_growth(store),
         "breakeven":      compute_breakeven(store),
         "cashflow":       compute_cashflow(store),
+        "sales_trend":    compute_sales_trend(context),
+        "demand_vs_stock": compute_demand_vs_stock(context),
+        "cost_efficiency": compute_cost_efficiency(context),
     }
 
 
@@ -39,6 +53,9 @@ def generate_pdf(store: dict) -> str:
     be   = data["breakeven"]
     cf   = data["cashflow"]
     inv  = data["inventory"]
+    st   = data["sales_trend"]
+    dvs  = data["demand_vs_stock"]
+    ce   = data["cost_efficiency"]
 
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
@@ -81,6 +98,31 @@ def generate_pdf(store: dict) -> str:
     row("Items Below Reorder Level",  str(inv['items_below_reorder_level']))
     pdf.ln(3)
 
+
+    section("Monthly Sales Revenue Trend")
+    row("Total Sales Revenue", f"NPR {st['total_sales_revenue_npr']:,.0f}")
+    first_month = st["monthly_sales_revenue"][0] if st["monthly_sales_revenue"] else None
+    last_month = st["monthly_sales_revenue"][-1] if st["monthly_sales_revenue"] else None
+    if first_month:
+        row("First Month Revenue", f"{first_month['MonthName']}: NPR {first_month['revenue_npr']:,.0f}")
+    if last_month:
+        row("Latest Month Revenue", f"{last_month['MonthName']}: NPR {last_month['revenue_npr']:,.0f}")
+    pdf.ln(3)
+
+    section("Stock vs Sales Demand Analysis")
+    row("Items Tracked", dvs["summary"]["items_tracked"])
+    row("Overstock Items", dvs["summary"]["overstock_items"])
+    row("Stockout Risk Items", dvs["summary"]["stockout_risk_items"])
+    row("Total Stock Units", f"{dvs['summary']['total_opening_stock_units']:,.0f}")
+    row("Total Demand Units", f"{dvs['summary']['total_sales_demand_units']:,.0f}")
+    pdf.ln(3)
+
+    section("Expense vs Purchase Cost Trend")
+    row("Total Purchase Cost", f"NPR {ce['summary']['total_purchase_cost_npr']:,.0f}")
+    row("Total Operating Expense", f"NPR {ce['summary']['total_operating_expense_npr']:,.0f}")
+    row("Combined Cost", f"NPR {ce['summary']['total_combined_cost_npr']:,.0f}")
+    pdf.ln(3)
+
     section("Break-Even")
     row("Overall Break-Even Units", f"{be['overall_breakeven_units']:,.0f}")
     row("Actual Units Sold",        f"{be['actual_units_sold']:,.0f}")
@@ -121,6 +163,15 @@ def generate_excel(store: dict) -> str:
 
         pd.DataFrame(data["inventory"]["below_reorder_items"]).to_excel(
             writer, sheet_name="Reorder Alerts", index=False)
+
+        pd.DataFrame(data["sales_trend"]["monthly_sales_revenue"]).to_excel(
+            writer, sheet_name="Sales Trend", index=False)
+
+        pd.DataFrame(data["demand_vs_stock"]["detail"]).to_excel(
+            writer, sheet_name="Demand vs Stock", index=False)
+
+        pd.DataFrame(data["cost_efficiency"]["monthly_cost_efficiency"]).to_excel(
+            writer, sheet_name="Cost Efficiency", index=False)
 
     logger.info(f"Excel saved: {out}")
     return out
