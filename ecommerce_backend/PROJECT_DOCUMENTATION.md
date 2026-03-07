@@ -282,26 +282,27 @@ Endpoints:
 File: `reports/report_generator.py`
 
 ### PDF (`BI_Report.pdf`)
-Contains executive summaries and dedicated visualization pages for trend-heavy analyses, including:
-- Profitability snapshot
-- Discounts snapshot
-- Inventory + Demand vs Stock summaries
-- Expense + Break-even summaries
-- Visual charts for monthly growth, sales trend, cashflow, category revenue, and cost efficiency
+Contains key sections:
+- Profitability
+- Cash Flow
+- Inventory
+- Monthly Sales Revenue Trend
+- Stock vs Sales Demand Analysis
+- Expense vs Purchase Cost Trend
+- Break-Even
 
 ### Excel (`BI_Report.xlsx`)
-Sheets generated for all analyses with both summary/detail tables, plus a `Dashboard Charts` worksheet with embedded visuals.
-Key sheets include:
-- `Profitability`, `Discounts Summary`, `Discounts Monthly`
-- `Inventory Summary`, `Reorder Alerts`
-- `Monthly Growth`, `Top Products`, `Category Revenue`
-- `Expenses`, `Expenses Summary`, `Monthly Expenses`
-- `Cash Flow`, `Cash Flow Summary`
-- `Break-Even`, `Break-Even Summary`
-- `Sales Trend`, `Sales by Payment`, `Sales by Delivery`
-- `Demand vs Stock`, `Overstock Items`, `Stockout Risk`, `Demand Stock Summary`
-- `Cost Efficiency`, `Cost Efficiency Summary`
-- `Dashboard Charts`
+Sheets generated:
+- `Profitability`
+- `Monthly Growth`
+- `Top Products`
+- `Expenses`
+- `Cash Flow`
+- `Break-Even`
+- `Reorder Alerts`
+- `Sales Trend`
+- `Demand vs Stock`
+- `Cost Efficiency`
 
 ## 12. Setup and Run
 From project root:
