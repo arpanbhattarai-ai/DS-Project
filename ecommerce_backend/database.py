@@ -10,7 +10,8 @@ from pipeline.stage_03_transform import transform
 
 logger = get_logger(__name__)
 
-DB_PATH = Path("data/app.db")
+BASE_DIR = Path(__file__).resolve().parent
+DB_PATH = BASE_DIR / "data" / "app.db"
 TABLES = ["inv", "sales", "purch", "exp"]
 
 

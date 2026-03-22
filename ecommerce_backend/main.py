@@ -15,6 +15,7 @@ import state
 
 setup_logging()
 logger = get_logger(__name__)
+BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI(
     title="Nepal Ecommerce BI API",
@@ -47,7 +48,7 @@ async def startup():
         return
 
     # Bootstrap path: no data in DB yet, ingest any legacy files in data/raw.
-    raw_dir = Path("data/raw")
+    raw_dir = BASE_DIR / "data" / "raw"
     excel_files = sorted(
         [*raw_dir.glob("*.xlsx"), *raw_dir.glob("*.xls")],
         key=lambda p: p.stat().st_mtime,

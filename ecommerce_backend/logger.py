@@ -11,6 +11,7 @@ from pathlib import Path
 _READY = False
 FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
 DATE   = "%Y-%m-%d %H:%M:%S"
+BASE_DIR = Path(__file__).resolve().parent
 
 
 def setup_logging(level: str = "INFO") -> None:
@@ -26,9 +27,10 @@ def setup_logging(level: str = "INFO") -> None:
     ch.setFormatter(fmt)
     root.addHandler(ch)
 
-    Path("logs").mkdir(exist_ok=True)
+    log_dir = BASE_DIR / "logs"
+    log_dir.mkdir(exist_ok=True)
     fh = logging.handlers.RotatingFileHandler(
-        "logs/app.log", maxBytes=5_000_000, backupCount=3, encoding="utf-8"
+        str(log_dir / "app.log"), maxBytes=5_000_000, backupCount=3, encoding="utf-8"
     )
     fh.setFormatter(fmt)
     root.addHandler(fh)

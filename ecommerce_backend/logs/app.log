@@ -370,3 +370,87 @@
 2026-03-07 23:15:27 | INFO     | analysis.sales_trend | Sales trend metrics computed.
 2026-03-07 23:15:27 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
 2026-03-07 23:15:27 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-07 23:24:48 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:24:48 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:24:48 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:25:01 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:25:01 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:25:01 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:25:01 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:25:01 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:25:01 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:25:01 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:25:01 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:25:01 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:25:01 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:25:01 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-07 23:26:31 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:26:31 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:26:31 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:26:38 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:26:38 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:26:38 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:26:38 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:26:38 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:26:38 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:26:39 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:26:39 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:26:39 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:26:39 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:26:39 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-07 23:27:01 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:27:01 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:27:01 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:27:07 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:27:07 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:27:07 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:27:07 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:27:07 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:27:07 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:27:07 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:27:07 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:27:07 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:27:07 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:27:07 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-07 23:36:14 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-07 23:36:14 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-07 23:36:14 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-07 23:36:27 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-07 23:36:27 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-07 23:36:27 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-07 23:36:27 | INFO     | analysis.products | Product metrics computed.
+2026-03-07 23:36:27 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-07 23:36:27 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-07 23:36:27 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-07 23:36:27 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-07 23:36:27 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-07 23:36:27 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-07 23:36:27 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-08 12:15:53 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-08 12:15:54 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-08 12:15:54 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-08 12:16:01 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-08 12:16:01 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-08 12:16:01 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-08 12:16:01 | INFO     | analysis.products | Product metrics computed.
+2026-03-08 12:16:01 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-08 12:16:01 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-08 12:16:01 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-08 12:16:01 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-08 12:16:01 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-08 12:16:01 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-08 12:16:01 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.
+2026-03-09 14:27:34 | INFO     | main | Nepal Ecommerce BI API started.
+2026-03-09 14:27:34 | INFO     | pipeline.stage_03_transform | Transform done. GrossRevenue=54,584,951  NetRevenue=53,019,062
+2026-03-09 14:27:34 | INFO     | main | Loaded analysis data from SQLite.
+2026-03-09 14:27:46 | INFO     | analysis.profitability | Profitability: NetProfit=5,573,644  GPM=18.75%
+2026-03-09 14:27:46 | INFO     | analysis.discounts | Discounts: 2.87% of gross revenue
+2026-03-09 14:27:46 | INFO     | analysis.inventory | Inventory: turnover=1.71x  DIO=213.7d
+2026-03-09 14:27:46 | INFO     | analysis.products | Product metrics computed.
+2026-03-09 14:27:46 | INFO     | analysis.expenses | Expenses: OpEx%=8.23
+2026-03-09 14:27:46 | INFO     | analysis.monthly_growth | Monthly growth computed.
+2026-03-09 14:27:46 | INFO     | analysis.breakeven | Break-even: BEU=1,586  MoS=92.10%
+2026-03-09 14:27:46 | INFO     | analysis.cashflow | Cashflow: NetCashMovement=23,427,860
+2026-03-09 14:27:46 | INFO     | analysis.sales_trend | Sales trend metrics computed.
+2026-03-09 14:27:46 | INFO     | analysis.demand_vs_stock | Demand vs stock metrics computed.
+2026-03-09 14:27:46 | INFO     | analysis.cost_efficiency | Cost efficiency metrics computed.

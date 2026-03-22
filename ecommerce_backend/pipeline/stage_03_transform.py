@@ -20,7 +20,7 @@ def transform(context: dict) -> dict:
     TotalDiscount        = sales["Discount"].sum()
     TotalRevenue         = GrossRevenue - TotalDiscount
     TotalPurchaseCost    = (purch["QuantityBought"] * purch["UnitCost"]).sum()
-    WeightedAvgCost      = TotalPurchaseCost / TotalQuantityBought
+    WeightedAvgCost      = (TotalPurchaseCost / TotalQuantityBought) if TotalQuantityBought else 0
     COGS                 = TotalQuantitySold * WeightedAvgCost
     TotalOperatingExpense = exp[[c for c in EXP_COLS if c in exp.columns]].sum().sum()
 

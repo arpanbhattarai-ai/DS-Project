@@ -13,22 +13,10 @@ from analysis.expenses       import compute_expenses
 from analysis.monthly_growth import compute_monthly_growth
 from analysis.breakeven      import compute_breakeven
 from analysis.cashflow       import compute_cashflow
-from analysis.sales_trend    import compute_sales_trend
-from analysis.demand_vs_stock import compute_demand_vs_stock
-from analysis.cost_efficiency import compute_cost_efficiency
+from routes.period_scope import scoped_store, selected_labels
 
 router = APIRouter(prefix="/analysis")
 logger = get_logger(__name__)
-
-
-def _analysis_context() -> dict:
-    return {
-        "sales": state.store["sales"],
-        "purch": state.store["purch"],
-        "inv": state.store["inv"],
-        "exp": state.store["exp"],
-        "analysis": {},
-    }
 
 
 def _require_data():
@@ -40,66 +28,64 @@ def _require_data():
 
 
 @router.get("/profitability")
-def profitability():
+def profitability(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_profitability(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_profitability(store)
 
 
 @router.get("/discounts")
-def discounts():
+def discounts(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_discounts(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_discounts(store)
 
 
 @router.get("/inventory")
-def inventory():
+def inventory(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_inventory(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_inventory(store)
 
 
 @router.get("/products")
-def products():
+def products(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_products(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_products(store)
 
 
 @router.get("/expenses")
-def expenses():
+def expenses(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_expenses(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_expenses(store)
 
 
 @router.get("/monthly-growth")
-def monthly_growth():
+def monthly_growth(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_monthly_growth(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    result = compute_monthly_growth(store, period=period)
+    labels = set(selected_labels(period, bucket))
+    result["monthly"] = [row for row in result.get("monthly", []) if row.get("PeriodLabel") in labels]
+    return result
 
 
 @router.get("/breakeven")
-def breakeven():
+def breakeven(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_breakeven(state.store)
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    return compute_breakeven(store)
 
 
 @router.get("/cashflow")
-def cashflow():
+def cashflow(period: str = "monthly", bucket: str | None = None):
     _require_data()
-    return compute_cashflow(state.store)
-
-
-@router.get("/sales-trend")
-def sales_trend():
-    _require_data()
-    return compute_sales_trend(_analysis_context())
-
-
-@router.get("/demand-vs-stock")
-def demand_vs_stock():
-    _require_data()
-    return compute_demand_vs_stock(_analysis_context())
-
-
-@router.get("/cost-efficiency")
-def cost_efficiency():
-    _require_data()
-    return compute_cost_efficiency(_analysis_context())
+    store = scoped_store(state.store, period=period, bucket=bucket)
+    result = compute_cashflow(store, period=period)
+    labels = set(selected_labels(period, bucket))
+    result["monthly_cashflow"] = [
+        row for row in result.get("monthly_cashflow", []) if row.get("PeriodLabel") in labels
+    ]
+    return result

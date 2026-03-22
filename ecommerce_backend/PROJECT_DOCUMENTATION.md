@@ -223,9 +223,6 @@ Endpoints:
 - `GET /analysis/monthly-growth`
 - `GET /analysis/breakeven`
 - `GET /analysis/cashflow`
-- `GET /analysis/sales-trend`
-- `GET /analysis/demand-vs-stock`
-- `GET /analysis/cost-efficiency`
 
 If data is unavailable:
 - `400` with detail:
@@ -266,18 +263,6 @@ Endpoints:
 ### Cashflow
 - Total inflow/outflow/net movement and monthly cashflow.
 
-### Sales Trend
-- Month-wise sales revenue trend (QuantitySold × UnitPriceSold).
-- Optional monthly breakdown by PaymentMode and DeliveryType.
-
-### Demand vs Stock
-- Item-wise stock and demand comparison.
-- Flags potential overstock and stockout-risk items.
-
-### Cost Efficiency
-- Month-wise purchase costs vs operating expenses.
-- Includes combined cost and expense-to-purchase ratio trend.
-
 ## 11. Report Generation
 File: `reports/report_generator.py`
 
@@ -286,9 +271,6 @@ Contains key sections:
 - Profitability
 - Cash Flow
 - Inventory
-- Monthly Sales Revenue Trend
-- Stock vs Sales Demand Analysis
-- Expense vs Purchase Cost Trend
 - Break-Even
 
 ### Excel (`BI_Report.xlsx`)
@@ -300,9 +282,6 @@ Sheets generated:
 - `Cash Flow`
 - `Break-Even`
 - `Reorder Alerts`
-- `Sales Trend`
-- `Demand vs Stock`
-- `Cost Efficiency`
 
 ## 12. Setup and Run
 From project root:

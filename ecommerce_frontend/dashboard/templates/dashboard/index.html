@@ -1,0 +1,365 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nepal Ecommerce BI Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}" />
+</head>
+<body>
+    <div class="page-bg"></div>
+    <div class="accent-shape accent-a"></div>
+    <div class="accent-shape accent-b"></div>
+    <main class="layout" id="dashboardRoot">
+        <aside class="sidebar panel">
+            <p class="eyebrow">BI Navigator</p>
+            <h2>Analysis Scope</h2>
+            <p class="side-note">Select period and bucket to request scoped analytics from backend APIs.</p>
+
+            <form method="get" class="scope-form" id="scopeForm">
+                <label for="periodSelect">Period</label>
+                <select id="periodSelect" name="period">
+                    <option value="monthly" {% if selected_period == 'monthly' %}selected{% endif %}>Monthly</option>
+                    <option value="quarterly" {% if selected_period == 'quarterly' %}selected{% endif %}>Quarterly</option>
+                    <option value="semiannual" {% if selected_period == 'semiannual' %}selected{% endif %}>Semi-Annual</option>
+                    <option value="annual" {% if selected_period == 'annual' %}selected{% endif %}>Annual</option>
+                </select>
+
+                <label for="bucketSelect">Bucket</label>
+                <select id="bucketSelect" name="bucket">
+                    <option value="all" {% if selected_bucket == 'all' %}selected{% endif %}>All {{ selected_period|title }}</option>
+                    {% for bucket in bucket_options %}
+                    <option value="{{ bucket }}" {% if selected_bucket == bucket %}selected{% endif %}>{{ bucket }}</option>
+                    {% endfor %}
+                </select>
+
+                <button class="btn primary" type="submit">Apply Scope</button>
+            </form>
+
+            <nav class="side-nav" aria-label="Dashboard sections">
+                <a href="#kpis">KPI Overview</a>
+                <a href="#trend">Trend Analysis</a>
+                <a href="#discounts">Discounts</a>
+                <a href="#profitability">Profitability</a>
+                <a href="#products">Products</a>
+                <a href="#inventory">Inventory</a>
+                <a href="#breakeven">Break-even</a>
+            </nav>
+        </aside>
+
+        <section class="container">
+            <header class="hero panel">
+                <div>
+                    <p class="eyebrow">Business Intelligence Console</p>
+                    <h1>Nepal Ecommerce Performance Dashboard</h1>
+                    <p class="hero-sub">A numbers-first command center with separated categories and switchable monthly, quarterly, semi-annual, and annual views from frontend controls.</p>
+                    <p class="active-period">Active Scope: <strong>{{ selected_period|title }}</strong>{% if selected_bucket != 'all' %} / <strong>{{ selected_bucket }}</strong>{% endif %}</p>
+                </div>
+                <div class="hero-actions">
+                    <a id="pdfReportLink" class="btn primary" href="{{ api_base }}/report/pdf?period={{ selected_period }}{% if selected_bucket != 'all' %}&bucket={{ selected_bucket }}{% endif %}" target="_blank" rel="noopener">Download PDF Report</a>
+                    <a id="excelReportLink" class="btn" href="{{ api_base }}/report/excel?period={{ selected_period }}{% if selected_bucket != 'all' %}&bucket={{ selected_bucket }}{% endif %}" target="_blank" rel="noopener">Download Excel Report</a>
+                </div>
+            </header>
+
+            {% if errors %}
+            <section class="panel warning">
+                <h2>Data Fetch Issues</h2>
+                <ul>
+                    {% for e in errors %}
+                    <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+                <p>Ensure FastAPI backend is running on <strong>{{ api_base }}</strong> and has loaded data.</p>
+            </section>
+            {% endif %}
+
+            <section id="kpis" class="kpi-grid">
+                {% for kpi in kpis %}
+                <article class="kpi-card">
+                    <p class="kpi-label">{{ kpi.label }}</p>
+                    <p class="kpi-value">
+                        {% if kpi.value is not None %}
+                            {{ kpi.prefix|default:"" }}{{ kpi.value }}{{ kpi.suffix|default:"" }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                </article>
+                {% endfor %}
+            </section>
+
+            <section class="kpi-grid derived-kpis">
+                <article class="kpi-card">
+                    <p class="kpi-label">Selected Period Revenue</p>
+                    <p class="kpi-value" id="periodRevenue">NPR 0</p>
+                </article>
+                <article class="kpi-card">
+                    <p class="kpi-label">Selected Period Profit</p>
+                    <p class="kpi-value" id="periodProfit">NPR 0</p>
+                </article>
+                <article class="kpi-card">
+                    <p class="kpi-label">Selected Period Margin</p>
+                    <p class="kpi-value" id="periodMargin">0%</p>
+                </article>
+                <article class="kpi-card">
+                    <p class="kpi-label">Selected Net Cash</p>
+                    <p class="kpi-value" id="periodNetCash">NPR 0</p>
+                </article>
+            </section>
+
+            <section id="trend" class="grid two">
+                <article class="panel">
+                    <h2 id="growthTitle">{{ selected_period|title }} Revenue vs Profit</h2>
+                    <div id="growthChart" class="chart"></div>
+                </article>
+                <article class="panel">
+                    <h2 id="cashflowTitle">{{ selected_period|title }} Cashflow</h2>
+                    <div id="cashflowChart" class="chart"></div>
+                </article>
+            </section>
+
+            <section class="panel">
+                <h2>{{ selected_period|title }} Buckets</h2>
+                <ul id="periodBucketList" class="bucket-list">
+                    {% for row in monthly_growth_data %}
+                    <li>{{ row.PeriodLabel|default:forloop.counter }}</li>
+                    {% empty %}
+                    <li>No period buckets available.</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section id="profitability" class="grid two">
+                <article class="panel">
+                    <h2>Expense Breakdown</h2>
+                    <div id="expenseChart" class="chart"></div>
+                </article>
+                <article class="panel stats-list">
+                    <h2>Profitability Snapshot</h2>
+                    <div><span>Gross Revenue</span><strong>{% if profitability.gross_revenue_npr is not None %}NPR {{ profitability.gross_revenue_npr }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Total Discount</span><strong>{% if profitability.total_discount_npr is not None %}NPR {{ profitability.total_discount_npr }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>COGS</span><strong>{% if profitability.cogs_npr is not None %}NPR {{ profitability.cogs_npr }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Gross Profit Margin</span><strong>{% if profitability.gross_profit_margin_pct is not None %}{{ profitability.gross_profit_margin_pct }}%{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Operating Expense Ratio</span><strong>{% if expenses.opex_pct_of_revenue is not None %}{{ expenses.opex_pct_of_revenue }}%{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Weighted Avg Cost</span><strong>{% if breakeven.weighted_avg_cost_npr is not None %}NPR {{ breakeven.weighted_avg_cost_npr }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Avg Contrib / Unit</span><strong>{% if breakeven.avg_contrib_per_unit_npr is not None %}NPR {{ breakeven.avg_contrib_per_unit_npr }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Actual Units Sold</span><strong>{% if breakeven.actual_units_sold is not None %}{{ breakeven.actual_units_sold }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Margin of Safety</span><strong>{% if breakeven.margin_of_safety_pct is not None %}{{ breakeven.margin_of_safety_pct }}%{% else %}N/A{% endif %}</strong></div>
+                </article>
+            </section>
+
+            <section id="discounts" class="grid two">
+                <article class="panel stats-list">
+                    <h2>Discount Insights</h2>
+                    <div><span>Discount % of Revenue</span><strong>{% if discounts.discount_pct_of_revenue is not None %}{{ discounts.discount_pct_of_revenue }}%{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Discounted Transactions</span><strong>{% if discounts.discounted_transactions is not None %}{{ discounts.discounted_transactions }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Total Transactions</span><strong>{% if discounts.total_transactions is not None %}{{ discounts.total_transactions }}{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Discounted Txn %</span><strong>{% if discounts.discounted_txn_pct is not None %}{{ discounts.discounted_txn_pct }}%{% else %}N/A{% endif %}</strong></div>
+                    <div><span>Avg Discount / Txn</span><strong>{% if discounts.avg_discount_per_txn_npr is not None %}NPR {{ discounts.avg_discount_per_txn_npr }}{% else %}N/A{% endif %}</strong></div>
+                </article>
+                <article class="panel">
+                    <h2>Monthly Discount Rows (Scoped)</h2>
+                    <div class="table-wrap compact">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>MonthNum</th>
+                                    <th>Monthly Discount (NPR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for d in discount_monthly %}
+                                <tr>
+                                    <td>{{ d.MonthNum }}</td>
+                                    <td>{{ d.monthly_discount_npr }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="2">No discount rows available for this scope.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <section id="products" class="panel">
+                <h2>Top 10 Products by Revenue</h2>
+                <label class="table-filter">
+                    <span>Search Product Table</span>
+                    <input id="productsFilter" type="search" placeholder="Type item name, category, or ID" />
+                </label>
+                <div class="table-wrap">
+                    <table id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Qty Sold</th>
+                                <th>Revenue (NPR)</th>
+                                <th>Profit (NPR)</th>
+                                <th>Contribution %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in products.top_10_products_by_revenue %}
+                            <tr>
+                                <td>{{ p.ItemID }}</td>
+                                <td>{{ p.ItemName }}</td>
+                                <td>{{ p.Category }}</td>
+                                <td>{{ p.ProductQtySold }}</td>
+                                <td>{{ p.ProductRevenue }}</td>
+                                <td>{{ p.ProductProfit }}</td>
+                                <td>{{ p.ContribPct }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="grid two">
+                <article class="panel">
+                    <h2>Revenue by Category</h2>
+                    <div class="table-wrap compact">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Revenue (NPR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c in category_revenue %}
+                                <tr>
+                                    <td>{{ c.Category }}</td>
+                                    <td>{{ c.category_revenue_npr }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="2">No category revenue rows available.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+                <article class="panel">
+                    <h2>Monthly Expenses Rows (Scoped)</h2>
+                    <div class="table-wrap compact">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Total Expense (NPR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for m in monthly_expenses %}
+                                <tr>
+                                    <td>{{ m.Month }}</td>
+                                    <td>{{ m.TotalExpense }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="2">No expense rows available for this scope.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <section id="inventory" class="grid two">
+                <article class="panel">
+                    <h2>Reorder Risk Items</h2>
+                    <label class="table-filter">
+                        <span>Search Reorder Table</span>
+                        <input id="reorderFilter" type="search" placeholder="Type item name or ID" />
+                    </label>
+                    <div class="table-wrap compact">
+                        <table id="reorderTable">
+                            <thead>
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Item Name</th>
+                                    <th>Closing Stock</th>
+                                    <th>Reorder Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for r in reorder_items %}
+                                <tr>
+                                    <td>{{ r.ItemID }}</td>
+                                    <td>{{ r.ItemName }}</td>
+                                    <td>{{ r.ClosingStock }}</td>
+                                    <td>{{ r.ReorderLevel }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="4">No items currently below reorder level.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article id="breakeven" class="panel">
+                    <h2>Break-even (Top 20 Easiest)</h2>
+                    <label class="table-filter">
+                        <span>Search Break-even Table</span>
+                        <input id="breakevenFilter" type="search" placeholder="Type item name or ID" />
+                    </label>
+                    <div class="table-wrap compact">
+                        <table id="breakevenTable">
+                            <thead>
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Item Name</th>
+                                    <th>Break-even Units</th>
+                                    <th>Contribution / Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for b in breakeven_items %}
+                                <tr>
+                                    <td>{{ b.ItemID }}</td>
+                                    <td>{{ b.ItemName }}</td>
+                                    <td>{{ b.BreakEvenUnits }}</td>
+                                    <td>{{ b.ContribPerUnit }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <section class="panel footer-note">
+                <h2>How This Dashboard Works</h2>
+                <p>This Django frontend requests scope-aware analytics from FastAPI endpoints under <strong>/analysis/*</strong> using selected <strong>period</strong> and <strong>bucket</strong> query parameters.</p>
+            </section>
+
+            <section class="panel" id="backendDebug">
+                <h2>Backend JSON Inspector</h2>
+                <p class="hero-sub">Raw backend response for the active scope. Use this to verify UI values against source JSON.</p>
+                <div class="debug-controls">
+                    <label for="endpointSelect">Endpoint</label>
+                    <select id="endpointSelect"></select>
+                </div>
+                <pre id="endpointJson" class="json-box">Loading backend payload...</pre>
+                <h3>Request Errors</h3>
+                <pre id="errorJson" class="json-box">[]</pre>
+            </section>
+        </section>
+    </main>
+
+    {{ monthly_growth_data|json_script:"monthly-growth-data" }}
+    {{ monthly_cashflow_data|json_script:"monthly-cashflow-data" }}
+    {{ expense_breakdown_data|json_script:"expense-breakdown-data" }}
+    {{ backend_payload_data|json_script:"backend-payload-data" }}
+    {{ backend_errors_data|json_script:"backend-errors-data" }}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+</body>
+</html>
